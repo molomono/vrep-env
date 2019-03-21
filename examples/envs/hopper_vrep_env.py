@@ -1,7 +1,7 @@
-
 from vrep_env import vrep_env
 
-vrep_scenes_path = 'C:\Program Files\V-REP3\V-REP_PRO\scenes'
+import os
+vrep_scenes_path = os.environ['VREP_SCENES_PATH']
 
 import gym
 from gym import spaces
