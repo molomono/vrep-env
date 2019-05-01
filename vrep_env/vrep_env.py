@@ -119,10 +119,12 @@ class VrepEnv(gym.Env):
 			raise RuntimeError('Simulation is already running.')
 		
 		# Optionally override physics engine ( 0=Bullet, 1=ODE, 2=Vortex, 3=Newton )
-		#self.set_integer_parameter(vrep.sim_intparam_dynamic_engine, 0) # 0=Bullet
+		self.set_integer_parameter(vrep.sim_intparam_dynamic_engine, 0) # 0=Bullet
 		
 		# Optionally override delta time
-		#self.set_float_parameter(vrep.sim_floatparam_simulation_time_step, 25)
+		self.set_float_parameter(vrep.sim_floatparam_simulation_time_step, 20)
+		#increase simulation speed by skipping calculation steps
+		self.set_integer_parameter(vrep.sim_intparam_speedmodifier, 8)
 		
 		self.RAPI_rc(vrep.simxSynchronous(self.cID,True))
 		self.RAPI_rc(vrep.simxStartSimulation(self.cID, vrep.simx_opmode_blocking))
