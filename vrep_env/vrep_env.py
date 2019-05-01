@@ -127,8 +127,8 @@ class VrepEnv(gym.Env):
 		self.RAPI_rc(vrep.simxSynchronous(self.cID,True))
 		self.RAPI_rc(vrep.simxStartSimulation(self.cID, vrep.simx_opmode_blocking))
 		#increase simulation speed by skipping calculation steps
-		self.set_integer_parameter(vrep.sim_intparam_speedmodifier, 8)
-		
+		self.set_integer_parameter(vrep.sim_intparam_speedmodifier, 2)
+
 		# Enable Threaded Rendering for faster simulation
 		if not self.is_headless:
 			self.set_boolean_parameter(vrep.sim_boolparam_threaded_rendering_enabled,True)
